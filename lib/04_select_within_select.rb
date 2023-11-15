@@ -75,6 +75,19 @@ def neighbors_of_certain_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
+    SELECT
+      name, continent
+    FROM  
+      countries
+    WHERE
+      continent IN (
+        SELECT
+          continent
+        FROM 
+          countries
+        WHERE
+          name IN ('Belize', 'Belgium')
+      );
   SQL
 end
 
@@ -90,6 +103,20 @@ def sparse_continents
   # population is less than 25,000,000. Show name, continent, and
   # population.
   # Hint: Sometimes rewording the problem can help you see the solution.
+    # 
   execute(<<-SQL)
+    SELECT
+      name, continent, population
+    FROM
+      countries
+    WHERE
+      continent NOT IN (
+        SELECT
+          continent
+        FROM
+          countries
+        WHERE
+          population > 25000000
+      );
   SQL
 end
