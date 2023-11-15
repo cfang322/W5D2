@@ -24,12 +24,7 @@ end
 def prizes_from_1950
   # Display Nobel prizes for 1950.
   execute(<<-SQL)
-    SELECT
-      subject
-    FROM
-      nobels
-    WHERE
-      yr = 1950;
+  
   SQL
 end
 
@@ -80,7 +75,8 @@ def eighties_literature
       nobels
     WHERE
       yr BETWEEN 1980 AND 1989;
-  SQL
+  SQL   
+  
 end
 
 def presidential_prizes
